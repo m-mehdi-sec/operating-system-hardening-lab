@@ -679,11 +679,13 @@ This project reinforced several practical security engineering principles:
     operating-system-hardening-lab/
     │
     ├── README.md
-    ├── documentation.md
     │
     ├── configs/
     │   └── sysmon/
     │       └── sysmon-soc.xml
+    │
+    ├── docs/
+    │   └── lab-documentation.md
     │
     └── images/
         ├── 01-win11-policy-analyzer-before.png
@@ -696,7 +698,6 @@ This project reinforced several practical security engineering principles:
         ├── 08-wazuh-active-agents.png
         ├── 09-wazuh-account-discovery.png
         └── 10-wazuh-failed-logon.png
-
 ---
 
 # Documentation
