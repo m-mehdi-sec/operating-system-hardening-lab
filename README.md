@@ -36,6 +36,8 @@ Windows Server 2025 provides **Active Directory Domain Services (AD DS)** and **
 
 ---
 
+## Project Objectives
+
 The project objectives were to:
 
 - assess the initial security posture of each operating system
@@ -111,7 +113,7 @@ This demonstrated that operating system security does not end when a baseline ha
 
 ---
 
-# Windows 11
+## Windows 11
 
 Windows 11 was assessed against the applicable **Microsoft Security Baseline** before major security changes were introduced.
 
@@ -156,7 +158,7 @@ This demonstrated that a baseline deviation is not automatically equivalent to a
 
 ---
 
-# Windows Server 2025
+## Windows Server 2025
 
 Windows Server 2025 was configured as a **Domain Controller and DNS server** for:
 
@@ -216,7 +218,7 @@ The tests confirmed that the server remained operational as a Domain Controller 
 
 ---
 
-# Ubuntu Server 24.04
+## Ubuntu Server 24.04
 
 Ubuntu Server 24.04 was assessed using **Ubuntu Security Guide (USG)** against the:
 
@@ -281,7 +283,7 @@ This demonstrated an important distinction between **compliance and risk-based s
 
 ---
 
-# Hardening Results
+## Hardening Results
 
 Although each operating system required different tools and controls, the same security engineering methodology was maintained.
 
@@ -300,7 +302,7 @@ The common workflow remained:
 
 ---
 
-# Monitoring & Detection Validation
+## Monitoring & Detection Validation
 
 Hardening establishes a stronger security configuration, but it does not provide continuous visibility into activity occurring afterward.
 
@@ -316,7 +318,7 @@ Instead, monitoring was used to validate that security-relevant activity on the 
 
 ---
 
-## Windows Audit Policy
+### Windows Audit Policy
 
 Windows auditing was reviewed after baseline implementation.
 
@@ -335,7 +337,7 @@ Standard Windows Security auditing provided visibility into activity such as pro
 
 ---
 
-## Sysmon
+### Sysmon
 
 Sysmon was used on Windows 11 to provide richer endpoint telemetry.
 
@@ -355,7 +357,7 @@ Account Discovery activity was successfully identified through Sysmon process ev
 
 ---
 
-## Sysmon Telemetry Tuning
+### Sysmon Telemetry Tuning
 
 The initial Sysmon configuration intentionally collected broad telemetry.
 
@@ -391,7 +393,7 @@ Effective security monitoring requires balancing visibility, signal quality, noi
 
 ---
 
-# Wazuh Validation
+### Wazuh Validation
 
 Wazuh was used as a lightweight centralized monitoring and validation layer.
 
@@ -402,9 +404,7 @@ Two Windows endpoints were connected:
 
 Several controlled security scenarios were used to verify event collection and detection.
 
----
-
-## Account Discovery
+#### Account Discovery
 
 Controlled discovery commands generated Sysmon process telemetry on Windows 11.
 
@@ -414,9 +414,7 @@ This validated the telemetry path:
 
 **Process Execution → Sysmon → Wazuh Agent → Wazuh Manager → Detection**
 
----
-
-## Failed Authentication
+#### Failed Authentication
 
 A controlled authentication attempt using a nonexistent account was generated against the Domain Controller.
 
@@ -438,9 +436,7 @@ The event preserved useful investigation context including:
 
 This demonstrated how Windows authentication auditing can provide useful context for centralized investigation.
 
----
-
-## File Integrity Monitoring
+#### File Integrity Monitoring
 
 Wazuh File Integrity Monitoring was tested against a monitored directory on Windows 11.
 
@@ -452,9 +448,7 @@ Wazuh detected the filesystem changes and generated corresponding FIM alerts.
 
 This demonstrated how unauthorized or unexpected file changes could be centrally observed.
 
----
-
-## Windows Log Clearing
+#### Windows Log Clearing
 
 A controlled Windows Application log clearing operation was performed on the Domain Controller after the log was backed up.
 
@@ -468,7 +462,7 @@ In this lab, the activity was generated deliberately to validate monitoring cove
 
 ---
 
-# Assess → Harden → Verify → Monitor
+## Assess → Harden → Verify → Monitor
 
 The complete project can be summarized as four connected security phases.
 
@@ -549,7 +543,7 @@ Together, the four phases provide a more complete operating system security life
 
 ---
 
-# Key Findings
+## Key Findings
 
 ### Security baselines provide consistency, not absolute security
 
@@ -585,7 +579,7 @@ Useful security monitoring requires balancing detection coverage with signal qua
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 This project reinforced several practical security engineering principles:
 
@@ -602,7 +596,7 @@ This project reinforced several practical security engineering principles:
 
 ---
 
-# Skills Demonstrated
+## Skills Demonstrated
 
 ### Operating System Security
 
@@ -691,9 +685,10 @@ This project reinforced several practical security engineering principles:
         ├── 08-wazuh-active-agents.png
         ├── 09-wazuh-account-discovery.png
         └── 10-wazuh-failed-logon.png
+
 ---
 
-# Documentation
+## Documentation
 
 Detailed technical documentation, implementation steps, commands, validation results, and troubleshooting are available here:
 
@@ -701,7 +696,7 @@ Detailed technical documentation, implementation steps, commands, validation res
 
 ---
 
-# Author
+## Author
 
 **Muhammad Mehdi**
 
