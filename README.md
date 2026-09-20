@@ -674,7 +674,7 @@ This project reinforced several practical security engineering principles:
 
 ---
 
-# Repository Structure
+## Repository Structure
 
     operating-system-hardening-lab/
     │
@@ -685,14 +685,17 @@ This project reinforced several practical security engineering principles:
     │   └── sysmon/
     │       └── sysmon-soc.xml
     │
-    ├── images/
-    │   ├── architecture/
-    │   ├── windows-11/
-    │   ├── windows-server/
-    │   ├── ubuntu/
-    │   └── monitoring/
-    │
-    └── LICENSE
+    └── images/
+        ├── 01-win11-policy-analyzer-before.png
+        ├── 02-win11-policy-analyzer-after.png
+        ├── 03-server2025-policy-analyzer-before.png
+        ├── 04-server2025-audit-policy-after.png
+        ├── 05-server2025-dc-verification.png
+        ├── 06-ubuntu-cis-before.png
+        ├── 07-ubuntu-cis-after.png
+        ├── 08-wazuh-active-agents.png
+        ├── 09-wazuh-account-discovery.png
+        └── 10-wazuh-failed-logon.png
 
 ---
 
