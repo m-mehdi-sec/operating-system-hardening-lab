@@ -502,57 +502,57 @@ Together, the four phases provide a more complete operating system security life
 
 ### Windows 11 - Baseline Assessment and Hardening
 
-The initial Policy Analyzer comparison identified multiple deviations between the effective Windows 11 configuration and the Microsoft Security Baseline, including missing audit settings.
-
 ![Windows 11 Policy Analyzer - Before Hardening](images/01-win11-policy-analyzer-before.png)
 
-After applying the Microsoft Security Baseline and verifying the effective configuration, only three deviations remained for further analysis.
+*Initial Policy Analyzer assessment showing multiple deviations between the effective Windows 11 configuration and the Microsoft Security Baseline, including missing audit settings.*
 
 ![Windows 11 Policy Analyzer - After Hardening](images/02-win11-policy-analyzer-after.png)
+
+*Post-hardening Policy Analyzer assessment showing only three remaining deviations for further analysis.*
 
 ---
 
 ### Windows Server 2025 - Domain Controller Hardening
 
-The initial Policy Analyzer assessment identified several differences between the effective Domain Controller configuration and the Windows Server 2025 security baseline.
-
 ![Windows Server 2025 Policy Analyzer - Before Hardening](images/03-server2025-policy-analyzer-before.png)
 
-After hardening, key security auditing categories such as Process Creation, Directory Service Changes, Sensitive Privilege Use, Credential Validation, and File Share auditing were enabled.
+*Initial Policy Analyzer assessment showing security policy deviations between the Domain Controller and the Windows Server 2025 security baseline.*
 
 ![Windows Server 2025 Audit Policy - After Hardening](images/04-server2025-audit-policy-after.png)
 
-Post-hardening verification confirmed that Active Directory Domain Services, DNS, and Netlogon remained operational and that the `lab.local` domain continued to resolve correctly.
+*Post-hardening verification of key audit categories including Process Creation, Directory Service Changes, Sensitive Privilege Use, Credential Validation, and File Share auditing.*
 
 ![Windows Server 2025 Domain Controller - Functional Verification](images/05-server2025-dc-verification.png)
+
+*Functional verification confirming that Active Directory Domain Services, DNS, and Netlogon remained operational and that `lab.local` resolved correctly after hardening.*
 
 ---
 
 ### Ubuntu Server 24.04 - CIS Level 1 Hardening
 
-The initial Ubuntu Security Guide audit against the CIS Level 1 Server profile produced 246 passed rules, 95 failed rules, and a compliance score of 74.77%.
-
 ![Ubuntu CIS Level 1 - Before Hardening](images/06-ubuntu-cis-before.png)
 
-After remediation and verification, the system reached 345 passed rules with only 6 remaining failures, increasing the compliance score to 94.20%.
+*Initial CIS Level 1 Server assessment using Ubuntu Security Guide - 246 rules passed, 95 failed, with a compliance score of 74.77%.*
 
 ![Ubuntu CIS Level 1 - After Hardening](images/07-ubuntu-cis-after.png)
+
+*Post-hardening assessment - 345 rules passed, only 6 remained failed, and the compliance score increased to 94.20%.*
 
 ---
 
 ### Monitoring and Detection Validation
 
-Wazuh was used as a monitoring and validation layer after hardening. Windows 11 and Windows Server 2025 were connected as active endpoints.
-
 ![Wazuh - Active Windows Endpoints](images/08-wazuh-active-agents.png)
 
-Sysmon telemetry from Windows 11 was successfully processed by Wazuh, detecting account discovery activity executed through PowerShell and mapping the activity to MITRE ATT&CK techniques T1087 and T1059.001.
+*Wazuh monitoring environment with Windows 11 and Windows Server 2025 connected as active endpoints.*
 
 ![Wazuh - Account Discovery Detection](images/09-wazuh-account-discovery.png)
 
-A controlled failed network authentication attempt against the Domain Controller generated Windows Event ID 4625. The event preserved useful investigation context including the target account, logon type, failure reason, and source address.
+*Sysmon telemetry processed by Wazuh detecting PowerShell-based account discovery and mapping the activity to MITRE ATT&CK T1087 and T1059.001.*
 
 ![Wazuh - Failed Logon Detection](images/10-wazuh-failed-logon.png)
+
+*Controlled failed network authentication against the Domain Controller showing the target account, Logon Type 3, failure reason, and source address `192.168.10.20`.*
 
 ---
 
