@@ -9,7 +9,7 @@ A practical operating system security project focused on assessing, hardening, v
 The lab environment was built in Hyper-V and segmented through OPNsense.  
 Three hardened operating systems forward security events and telemetry to a centralized Wazuh server.
 
-![Operating System Hardening Lab Architecture](images/lab-architecture.png)
+![Operating System Hardening Lab Architecture](images/os-hardening-lab-architecture.png)
 
 The lab covers three operating systems:
 
