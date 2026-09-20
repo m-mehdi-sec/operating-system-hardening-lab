@@ -1,12 +1,16 @@
 # Technical Documentation
 
+Detailed implementation notes, commands, validation results, and troubleshooting for the Operating System Hardening Lab.
+
+[← Back to project overview](../README.md)
+
 This document contains the technical implementation, commands, validation steps, and selected results from the Operating System Hardening Lab.
 
 ---
 
-# 1. Windows 11 Hardening
+## 1. Windows 11 Hardening
 
-## 1.1 Initial Security Assessment
+### 1.1 Initial Security Assessment
 
 Windows 11 was assessed before applying the Microsoft Security Baseline.
 
@@ -46,7 +50,7 @@ Examples included:
 
 ---
 
-## 1.2 Rollback Preparation
+### 1.2 Rollback Preparation
 
 Rollback capability was established before applying the baseline.
 
@@ -61,7 +65,7 @@ This provided:
 
 ---
 
-## 1.3 Baseline Implementation
+### 1.3 Baseline Implementation
 
 The Windows 11 security configuration was implemented using:
 
@@ -81,7 +85,7 @@ The workstation was then restarted.
 
 ---
 
-## 1.4 Microsoft Defender Verification
+### 1.4 Microsoft Defender Verification
 
 Microsoft Defender was checked after baseline implementation.
 
@@ -100,7 +104,7 @@ This confirmed that endpoint protection remained operational after hardening.
 
 ---
 
-## 1.5 Windows Firewall Verification
+### 1.5 Windows Firewall Verification
 
 Firewall status was verified across all profiles:
 
@@ -114,7 +118,7 @@ The following profiles remained enabled:
 
 ---
 
-## 1.6 Services and Network Exposure
+### 1.6 Services and Network Exposure
 
 Running services and listening ports were reviewed as part of the host assessment.
 
@@ -131,7 +135,7 @@ The workstation retained the network services required by the lab.
 
 ---
 
-## 1.7 Functional Validation
+### 1.7 Functional Validation
 
 The system was tested after baseline implementation.
 
@@ -150,7 +154,7 @@ This was important because the hardening process was not considered successful s
 
 ---
 
-## 1.8 Post-Hardening Policy Analysis
+### 1.8 Post-Hardening Policy Analysis
 
 Policy Analyzer was run again against the hardened Effective State.
 
@@ -162,9 +166,9 @@ The remaining differences were documented rather than automatically modified.
 
 ---
 
-# 2. Windows Server 2025 Hardening
+## 2. Windows Server 2025 Hardening
 
-## 2.1 Server Role and Configuration
+### 2.1 Server Role and Configuration
 
 Windows Server 2025 was configured as a Domain Controller and DNS server.
 
@@ -182,7 +186,7 @@ The server role was identified before baseline selection because Microsoft provi
 
 ---
 
-## 2.2 Rollback Preparation
+### 2.2 Rollback Preparation
 
 A Hyper-V checkpoint was created before applying the baseline:
 
@@ -200,7 +204,7 @@ This provided both VM-level and policy-level recovery.
 
 ---
 
-## 2.3 Microsoft Security Baseline
+### 2.3 Microsoft Security Baseline
 
 The server was hardened using:
 
@@ -226,7 +230,7 @@ Member Server policies were not used because the server did not have that role.
 
 ---
 
-## 2.4 Pre-Hardening Policy Analysis
+### 2.4 Pre-Hardening Policy Analysis
 
 Policy Analyzer was used to compare the Microsoft baseline with the server's Effective State.
 
@@ -256,7 +260,7 @@ The findings established the security state before baseline implementation.
 
 ---
 
-## 2.5 Group Policy Implementation
+### 2.5 Group Policy Implementation
 
 The Domain Controller and Domain Security baselines were imported and applied through Group Policy.
 
@@ -279,7 +283,7 @@ The resulting policy set included:
 
 ---
 
-## 2.6 Core Domain Controller Services
+### 2.6 Core Domain Controller Services
 
 After restart, the required services were verified:
 
@@ -295,7 +299,7 @@ The following services reported:
 
 ---
 
-## 2.7 DNS Validation
+### 2.7 DNS Validation
 
 DNS resolution for the Active Directory domain was tested:
 
@@ -309,7 +313,7 @@ DNS continued functioning after baseline implementation.
 
 ---
 
-## 2.8 Domain Controller Discovery
+### 2.8 Domain Controller Discovery
 
 Domain Controller discovery was tested using:
 
@@ -325,7 +329,7 @@ with:
 
 ---
 
-## 2.9 SYSVOL and NETLOGON
+### 2.9 SYSVOL and NETLOGON
 
 Domain Controller shares were verified using:
 
@@ -340,7 +344,7 @@ This confirmed that essential domain resources remained accessible after hardeni
 
 ---
 
-## 2.10 Active Directory and DNS Administration
+### 2.10 Active Directory and DNS Administration
 
 Active Directory Users and Computers was opened after baseline implementation.
 
@@ -357,7 +361,7 @@ Both DNS zones remained operational.
 
 ---
 
-## 2.11 Domain Controller Health
+### 2.11 Domain Controller Health
 
 Domain Controller health was checked using:
 
@@ -385,7 +389,7 @@ The warnings were documented because subsequent testing confirmed that:
 
 ---
 
-## 2.12 Post-Hardening Audit Policy
+### 2.12 Post-Hardening Audit Policy
 
 After baseline implementation, several security-relevant audit categories were active, including:
 
@@ -401,7 +405,7 @@ This increased visibility into authentication, administrative activity, and Acti
 
 ---
 
-## 2.13 UAC
+### 2.13 UAC
 
 Relevant UAC settings after hardening included:
 
@@ -413,7 +417,7 @@ These values aligned with the selected baseline.
 
 ---
 
-## 2.14 SMB and Hardened UNC Paths
+### 2.14 SMB and Hardened UNC Paths
 
 SMB-related protections were applied through the baseline.
 
@@ -427,7 +431,7 @@ Restrictions on insecure guest authentication were also applied.
 
 ---
 
-## 2.15 NTLM and LSA
+### 2.15 NTLM and LSA
 
 Relevant post-hardening settings included:
 
@@ -445,7 +449,7 @@ These settings provided a more restrictive authentication configuration than the
 
 ---
 
-## 2.16 WinRM
+### 2.16 WinRM
 
 Remote administration controls were hardened through policy.
 
@@ -457,7 +461,7 @@ Restrictions included:
 
 ---
 
-## 2.17 AppLocker Behavior
+### 2.17 AppLocker Behavior
 
 A functional change was observed after baseline implementation.
 
@@ -471,7 +475,7 @@ The behavior was documented as a functional effect of the hardened configuration
 
 ---
 
-## 2.18 Microsoft Defender
+### 2.18 Microsoft Defender
 
 Microsoft Defender remained active after hardening.
 
@@ -494,9 +498,9 @@ The deviation was documented for further analysis rather than changed without ev
 
 ---
 
-# 3. Ubuntu Server 24.04 Hardening
+## 3. Ubuntu Server 24.04 Hardening
 
-## 3.1 Initial Configuration
+### 3.1 Initial Configuration
 
 The Ubuntu hardening target used:
 
@@ -511,7 +515,7 @@ The server was assessed before automated remediation.
 
 ---
 
-## 3.2 SSH Configuration
+### 3.2 SSH Configuration
 
 SSH was treated as a required administrative dependency.
 
@@ -527,7 +531,7 @@ SSH access from Windows 11 had to remain functional throughout the hardening pro
 
 ---
 
-## 3.3 Initial CIS Audit
+### 3.3 Initial CIS Audit
 
 Ubuntu Security Guide was used to audit the system against the CIS Level 1 Server profile.
 
@@ -551,7 +555,7 @@ Findings included controls related to:
 
 ---
 
-## 3.4 Recovery Preparation
+### 3.4 Recovery Preparation
 
 A Hyper-V checkpoint was created before automated CIS remediation.
 
@@ -565,7 +569,7 @@ The rollback point protected against changes that could affect:
 
 ---
 
-## 3.5 CIS Remediation
+### 3.5 CIS Remediation
 
 The CIS Level 1 Server profile was applied using Ubuntu Security Guide.
 
@@ -575,7 +579,7 @@ Functional validation was performed before the compliance result was evaluated.
 
 ---
 
-## 3.6 SSH Verification
+### 3.6 SSH Verification
 
 SSH connectivity from Windows 11 was tested after remediation.
 
@@ -587,7 +591,7 @@ The SSH service continued listening on:
 
 ---
 
-## 3.7 Network Verification
+### 3.7 Network Verification
 
 The server retained its expected network configuration:
 
@@ -597,7 +601,7 @@ Required network connectivity remained available.
 
 ---
 
-## 3.8 Privileged Administration
+### 3.8 Privileged Administration
 
 sudo access was tested after remediation.
 
@@ -605,7 +609,7 @@ Administrative commands continued functioning correctly.
 
 ---
 
-## 3.9 AppArmor
+### 3.9 AppArmor
 
 AppArmor remained active after the CIS profile was applied.
 
@@ -613,7 +617,7 @@ This confirmed that mandatory access control remained available after remediatio
 
 ---
 
-## 3.10 systemd Validation
+### 3.10 systemd Validation
 
 Failed services were checked after reboot.
 
@@ -621,7 +625,7 @@ No failed systemd units were present during final validation.
 
 ---
 
-## 3.11 Final CIS Audit
+### 3.11 Final CIS Audit
 
 The same CIS Level 1 Server profile was audited again after remediation.
 
@@ -639,7 +643,7 @@ while SSH, networking, sudo, and system services remained functional.
 
 ---
 
-## 3.12 Remaining CIS Findings
+### 3.12 Remaining CIS Findings
 
 Six controls remained non-compliant.
 
@@ -654,9 +658,9 @@ The remaining findings were left documented rather than modified solely to incre
 
 ---
 
-# 4. Windows Audit Policy
+## 4. Windows Audit Policy
 
-## 4.1 Audit Configuration
+### 4.1 Audit Configuration
 
 Windows auditing was reviewed using:
 
@@ -680,7 +684,7 @@ Relevant active categories included:
 
 ---
 
-## 4.2 Process Creation Auditing
+### 4.2 Process Creation Auditing
 
 Windows Security Event ID `4688` was used to examine native process auditing.
 
@@ -696,9 +700,9 @@ This provided a native Windows telemetry source before Sysmon enrichment was exa
 
 ---
 
-# 5. Sysmon
+## 5. Sysmon
 
-## 5.1 Service Verification
+### 5.1 Service Verification
 
 Sysmon was installed on Windows 11 as:
 
@@ -723,7 +727,7 @@ Sysmon events were written to:
 
 ---
 
-## 5.2 Process Telemetry
+### 5.2 Process Telemetry
 
 Sysmon Event ID `1` was compared with native Windows Security Event ID `4688`.
 
@@ -739,7 +743,7 @@ This additional context was useful for investigation and correlation.
 
 ---
 
-## 5.3 Initial Telemetry Scope
+### 5.3 Initial Telemetry Scope
 
 The initial lab configuration collected:
 
@@ -767,7 +771,7 @@ The event distribution showed that Registry and ImageLoad telemetry dominated th
 
 ---
 
-## 5.4 Wazuh Agent Buffer Pressure
+### 5.4 Wazuh Agent Buffer Pressure
 
 The Wazuh agent subsequently reported:
 
@@ -789,7 +793,7 @@ The event source was therefore tuned instead of leaving the broad collection con
 
 ---
 
-## 5.5 Final Sysmon Configuration
+### 5.5 Final Sysmon Configuration
 
 The final lab configuration retained:
 
@@ -820,7 +824,7 @@ Sysmon reported:
 
 ---
 
-## 5.6 Post-Tuning Verification
+### 5.6 Post-Tuning Verification
 
 Events generated after the configuration change were sampled again.
 
@@ -838,7 +842,7 @@ This confirmed that the high-volume telemetry had been removed from the active c
 
 ---
 
-## 5.7 Detection Validation After Tuning
+### 5.7 Detection Validation After Tuning
 
 Controlled activity was generated after tuning:
 
@@ -854,7 +858,7 @@ This confirmed that the tuning did not remove the process telemetry required for
 
 ---
 
-## 5.8 DNS Query Verification
+### 5.8 DNS Query Verification
 
 DNS activity was generated using:
 
@@ -874,9 +878,9 @@ Event ID `22` was successfully generated.
 
 ---
 
-# 6. Wazuh
+## 6. Wazuh
 
-## 6.1 Wazuh Server
+### 6.1 Wazuh Server
 
 A separate Ubuntu Server 24.04 system was used for Wazuh.
 
@@ -892,7 +896,7 @@ The Wazuh dashboard was accessed over HTTPS.
 
 ---
 
-## 6.2 Windows Agents
+### 6.2 Windows Agents
 
 Two Windows systems were enrolled:
 
@@ -905,7 +909,7 @@ Both agents reached an active state.
 
 ---
 
-## 6.3 Sysmon Event Collection
+### 6.3 Sysmon Event Collection
 
 The Windows 11 Wazuh agent monitored:
 
@@ -919,7 +923,7 @@ This verified that the Wazuh agent was reading the Sysmon event channel.
 
 ---
 
-## 6.4 Account Discovery Detection
+### 6.4 Account Discovery Detection
 
 Controlled discovery activity was generated on Windows 11:
 
@@ -945,7 +949,7 @@ The detections were based on Sysmon Event ID `1`.
 
 ---
 
-## 6.5 Failed Authentication Detection
+### 6.5 Failed Authentication Detection
 
 A controlled network authentication attempt was generated against the Domain Controller using a nonexistent account:
 
@@ -976,7 +980,7 @@ This confirmed that failed network authentication against the Domain Controller 
 
 ---
 
-## 6.6 File Integrity Monitoring
+### 6.6 File Integrity Monitoring
 
 A monitored test directory was available on Windows 11:
 
@@ -1007,7 +1011,7 @@ The complete sequence was:
 
 ---
 
-## 6.7 Windows Log Clearing Detection
+### 6.7 Windows Log Clearing Detection
 
 A controlled log-management operation was performed on Windows Server 2025.
 
@@ -1031,9 +1035,9 @@ This confirmed centralized visibility into Windows log-clearing activity.
 
 ---
 
-# 7. Troubleshooting and Tuning
+## 7. Troubleshooting and Tuning
 
-## 7.1 Wazuh Agent Manager Address
+### 7.1 Wazuh Agent Manager Address
 
 During the initial Windows 11 agent setup, the agent attempted to connect to an incorrect manager address:
 
@@ -1055,7 +1059,7 @@ and reached an active state.
 
 ---
 
-## 7.2 Excessive Sysmon Telemetry
+### 7.2 Excessive Sysmon Telemetry
 
 The initial broad Sysmon configuration generated large volumes of:
 
@@ -1071,7 +1075,7 @@ This preserved useful detection visibility while reducing unnecessary event volu
 
 ---
 
-## 7.3 Wazuh Event Visibility
+### 7.3 Wazuh Event Visibility
 
 Not every locally generated event appeared as a dedicated alert in Wazuh Threat Hunting.
 
@@ -1087,7 +1091,7 @@ were treated as separate stages rather than assuming that every collected event 
 
 ---
 
-# 8. Final Technical State
+## 8. Final Technical State
 
 At the end of the implementation:
 
