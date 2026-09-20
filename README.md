@@ -642,7 +642,7 @@ This project reinforced several practical security engineering principles:
 
 Detailed technical documentation, implementation steps, commands, validation results, and troubleshooting are available here:
 
-[Lab Documentation](documentation.md)
+[Lab Documentation](docs/lab-documentation.md)
 
 ---
 
