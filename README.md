@@ -4,6 +4,13 @@
 
 A practical operating system security project focused on assessing, hardening, validating, and monitoring Windows and Linux systems using established security baselines and security monitoring controls.
 
+## Lab Architecture
+
+The lab environment was built in Hyper-V and segmented through OPNsense.  
+Three hardened operating systems forward security events and telemetry to a centralized Wazuh server.
+
+![Operating System Hardening Lab Architecture](images/lab-architecture.png)
+
 The lab covers three operating systems:
 
 - **Windows 11**
