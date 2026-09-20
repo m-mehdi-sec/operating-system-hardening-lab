@@ -799,9 +799,9 @@ The final lab configuration retained:
 - Driver Load
 - DNS Query
 
-The configuration was stored as:
+The final Sysmon configuration used in this lab is available here:
 
-`configs/sysmon/sysmon-soc.xml`
+[Sysmon Configuration](../configs/sysmon/sysmon-soc.xml)
 
 The high-volume categories removed from the final configuration were:
 
