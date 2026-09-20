@@ -498,6 +498,64 @@ Together, the four phases provide a more complete operating system security life
 
 ---
 
+## Screenshots
+
+### Windows 11 - Baseline Assessment and Hardening
+
+The initial Policy Analyzer comparison identified multiple deviations between the effective Windows 11 configuration and the Microsoft Security Baseline, including missing audit settings.
+
+![Windows 11 Policy Analyzer - Before Hardening](images/windows-11/01-win11-policy-analyzer-before.png)
+
+After applying the Microsoft Security Baseline and verifying the effective configuration, only three deviations remained for further analysis.
+
+![Windows 11 Policy Analyzer - After Hardening](images/windows-11/02-win11-policy-analyzer-after.png)
+
+---
+
+### Windows Server 2025 - Domain Controller Hardening
+
+The initial Policy Analyzer assessment identified several differences between the effective Domain Controller configuration and the Windows Server 2025 security baseline.
+
+![Windows Server 2025 Policy Analyzer - Before Hardening](images/windows-server/03-server2025-policy-analyzer-before.png)
+
+After hardening, key security auditing categories such as Process Creation, Directory Service Changes, Sensitive Privilege Use, Credential Validation, and File Share auditing were enabled.
+
+![Windows Server 2025 Audit Policy - After Hardening](images/windows-server/04-server2025-audit-policy-after.png)
+
+Post-hardening verification confirmed that Active Directory Domain Services, DNS, and Netlogon remained operational and that the `lab.local` domain continued to resolve correctly.
+
+![Windows Server 2025 Domain Controller - Functional Verification](images/windows-server/05-server2025-dc-verification.png)
+
+---
+
+### Ubuntu Server 24.04 - CIS Level 1 Hardening
+
+The initial Ubuntu Security Guide audit against the CIS Level 1 Server profile produced 246 passed rules, 95 failed rules, and a compliance score of 74.77%.
+
+![Ubuntu CIS Level 1 - Before Hardening](images/ubuntu/06-ubuntu-cis-before.png)
+
+After remediation and verification, the system reached 345 passed rules with only 6 remaining failures, increasing the compliance score to 94.20%.
+
+![Ubuntu CIS Level 1 - After Hardening](images/ubuntu/07-ubuntu-cis-after.png)
+
+---
+
+### Monitoring and Detection Validation
+
+Wazuh was used as a monitoring and validation layer after hardening. Windows 11 and Windows Server 2025 were connected as active endpoints.
+
+![Wazuh - Active Windows Endpoints](images/monitoring/08-wazuh-active-agents.png)
+
+Sysmon telemetry from Windows 11 was successfully processed by Wazuh, detecting account discovery activity executed through PowerShell and mapping the activity to MITRE ATT&CK techniques T1087 and T1059.001.
+
+![Wazuh - Account Discovery Detection](images/monitoring/09-wazuh-account-discovery.png)
+
+A controlled failed network authentication attempt against the Domain Controller generated Windows Event ID 4625. The event preserved useful investigation context including the target account, logon type, failure reason, and source address.
+
+![Wazuh - Failed Logon Detection](images/monitoring/10-wazuh-failed-logon.png)
+
+---
+
 # Key Findings
 
 ### Security baselines provide consistency, not absolute security
