@@ -53,7 +53,7 @@ The objective was not to reach an artificial **100% compliance score**, but to a
 
 ---
 
-## Lab Architecture
+## Lab Systems
 
 | System | Role | IP Address | Security Focus |
 |---|---|---:|---|
