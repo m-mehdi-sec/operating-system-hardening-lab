@@ -20,12 +20,6 @@ Three hardened operating systems forward security events and telemetry to a cent
 | Ubuntu Server 24.04 | CIS Level 1 audit improved from 74.77% to 94.20% using USG |
 | Monitoring | Sysmon and Wazuh used to validate security telemetry and detection |
 
-The lab covers three operating systems:
-
-- **Windows 11**
-- **Windows Server 2025**
-- **Ubuntu Server 24.04**
-
 The project combines **Microsoft Security Baselines**, **CIS guidance**, **Ubuntu Security Guide (USG)**, Windows auditing, Sysmon, and Wazuh to demonstrate a structured operating system hardening lifecycle.
 
 Rather than treating hardening as a one-time configuration task, the project follows a repeatable security engineering workflow:
