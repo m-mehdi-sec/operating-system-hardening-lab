@@ -36,22 +36,13 @@ Windows Server 2025 provides **Active Directory Domain Services (AD DS)** and **
 
 ---
 
-## Project Objectives
+The project objectives were to:
 
-The project was designed to:
-
-- establish a measurable security baseline before making changes
-- identify security configuration gaps and unnecessary attack surface
-- apply established and role-appropriate security baselines
-- preserve required system functionality during hardening
-- verify the effective security state after implementation
-- compare security posture before and after hardening
-- document remaining deviations instead of forcing artificial compliance
-- improve Windows security visibility through Audit Policy and Sysmon
-- validate selected security events through Wazuh
-- demonstrate the relationship between hardening, verification, and continuous monitoring
-
-The objective was not to reach an artificial **100% compliance score**, but to apply security controls in a controlled, measurable, and operationally safe way.
+- assess the initial security posture of each operating system
+- apply role-appropriate security baselines and hardening controls
+- reduce unnecessary attack surface while preserving required functionality
+- verify both security configuration and system functionality after changes
+- document measurable results, remaining deviations, and monitoring validation
 
 ---
 
