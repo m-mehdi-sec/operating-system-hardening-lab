@@ -11,6 +11,15 @@ Three hardened operating systems forward security events and telemetry to a cent
 
 ![Operating System Hardening Lab Architecture](images/os-hardening-lab-architecture.png)
 
+### Key Results
+
+| Area | Result |
+|---|---|
+| Windows 11 | Microsoft Security Baseline, Defender, Firewall, auditing and Sysmon |
+| Windows Server 2025 | Domain Controller hardening with Microsoft Security Baselines, GPO and AppLocker |
+| Ubuntu Server 24.04 | CIS Level 1 audit improved from 74.77% to 94.20% using USG |
+| Monitoring | Sysmon and Wazuh used to validate security telemetry and detection |
+
 The lab covers three operating systems:
 
 - **Windows 11**
