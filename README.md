@@ -26,6 +26,20 @@ Rather than treating hardening as a one-time configuration task, the project fol
 
 **Assess → Harden → Verify → Monitor**
 
+## Lab Systems
+
+| System | Role | IP Address | Security Focus |
+|---|---|---:|---|
+| Windows 11 | Security workstation | `192.168.10.20` | Microsoft Security Baseline, Audit Policy, Sysmon |
+| Windows Server 2025 | Domain Controller / DNS | `192.168.10.10` | Microsoft Domain Controller Security Baseline, GPO |
+| Ubuntu Server 24.04 | Hardened Linux server | `192.168.10.30` | CIS Level 1 Server, USG |
+| Ubuntu Server 24.04 | Wazuh server | `192.168.10.40` | Centralized security monitoring |
+| OPNsense | Gateway / Firewall | `192.168.10.1` | Lab network gateway |
+
+The environment runs in **Hyper-V** on an isolated internal lab network.
+
+Windows Server 2025 provides **Active Directory Domain Services (AD DS)** and **DNS** for the `lab.local` domain.
+
 ---
 
 ## Project Objectives
@@ -44,22 +58,6 @@ The project was designed to:
 - demonstrate the relationship between hardening, verification, and continuous monitoring
 
 The objective was not to reach an artificial **100% compliance score**, but to apply security controls in a controlled, measurable, and operationally safe way.
-
----
-
-## Lab Systems
-
-| System | Role | IP Address | Security Focus |
-|---|---|---:|---|
-| Windows 11 | Security workstation | `192.168.10.20` | Microsoft Security Baseline, Audit Policy, Sysmon |
-| Windows Server 2025 | Domain Controller / DNS | `192.168.10.10` | Microsoft Domain Controller Security Baseline, GPO |
-| Ubuntu Server 24.04 | Hardened Linux server | `192.168.10.30` | CIS Level 1 Server, USG |
-| Ubuntu Server 24.04 | Wazuh server | `192.168.10.40` | Centralized security monitoring |
-| OPNsense | Gateway / Firewall | `192.168.10.1` | Lab network gateway |
-
-The environment runs in **Hyper-V** on an isolated internal lab network.
-
-Windows Server 2025 provides **Active Directory Domain Services (AD DS)** and **DNS** for the `lab.local` domain.
 
 ---
 
