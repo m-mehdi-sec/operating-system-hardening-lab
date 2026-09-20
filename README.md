@@ -675,6 +675,7 @@ This project reinforced several practical security engineering principles:
     │   └── lab-documentation.md
     │
     └── images/
+        ├── os-hardening-lab-architecture.png
         ├── 01-win11-policy-analyzer-before.png
         ├── 02-win11-policy-analyzer-after.png
         ├── 03-server2025-policy-analyzer-before.png
