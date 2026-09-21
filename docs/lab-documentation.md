@@ -745,6 +745,8 @@ This additional context was useful for investigation and correlation.
 
 ### 5.3 Initial Telemetry Scope
 
+The initial Sysmon configuration was intentionally broad to provide detailed endpoint telemetry and establish which event categories generated the most activity.
+
 The initial lab configuration collected:
 
 - Event ID 1 — Process Creation
@@ -756,22 +758,26 @@ The initial lab configuration collected:
 - Event IDs 12–14 — Registry Activity
 - Event ID 22 — DNS Query
 
-A sample of 500 recent events showed high volumes of Registry activity:
-
-| Event ID | Count |
-|---:|---:|
-| 12 | 330 |
-| 13 | 84 |
-| 7 | 57 |
-| 11 | 25 |
-| 1 | 2 |
-| 5 | 2 |
-
-The event distribution showed that Registry and ImageLoad telemetry dominated the sample.
+This broad collection provided extensive visibility, but it also generated telemetry that was not equally valuable for the detection scenarios used in the lab.
 
 ---
 
-### 5.4 Wazuh Agent Buffer Pressure
+### 5.4 Sysmon Telemetry Analysis and Tuning
+
+The Sysmon Operational log was analyzed before tuning to determine which event categories generated the highest volume.
+
+A sample of 500 recent events showed:
+
+| Event ID | Event Type | Count |
+|---:|---|---:|
+| 12 | Registry Event | 330 |
+| 13 | Registry Event | 84 |
+| 7 | Image Load | 57 |
+| 11 | File Create | 25 |
+| 1 | Process Create | 2 |
+| 5 | Process Terminate | 2 |
+
+Registry activity, Image Load, and File Create events dominated the sample.
 
 The Wazuh agent subsequently reported:
 
@@ -789,13 +795,15 @@ The buffer later recovered:
 
     Agent buffer is under 70 %. Working properly again.
 
-The event source was therefore tuned instead of leaving the broad collection configuration unchanged.
+The event volume demonstrated that collecting more telemetry did not automatically improve monitoring quality. The configuration therefore needed to be tuned so that useful security visibility could be preserved without continuously forwarding unnecessary high-volume events.
 
----
+The following high-volume categories were removed from the final configuration:
 
-### 5.5 Final Sysmon Configuration
+- Image Load
+- File Create
+- Registry Event
 
-The final lab configuration retained:
+The following telemetry was retained:
 
 - Process Creation
 - Network Connection
@@ -803,17 +811,20 @@ The final lab configuration retained:
 - Driver Load
 - DNS Query
 
-The final Sysmon configuration used in this lab is available here:
+The tuning workflow was:
 
-[Sysmon Configuration](../configs/sysmon/sysmon-soc.xml)
+**Broad Collection → Measure → Identify Noise → Tune → Re-test Detection**
 
-The high-volume categories removed from the final configuration were:
+---
 
-- ImageLoad
-- FileCreate
-- RegistryEvent
+### 5.5 Sysmon Configuration Files
 
-The updated configuration was applied using:
+Both the initial and final configurations are retained to document the tuning process.
+
+- [Pre-Tuning Sysmon Configuration](../configs/sysmon/sysmon-pre-tuning.xml) — initial broad configuration used to analyze event volume and identify unnecessary telemetry.
+- [Tuned Sysmon Configuration](../configs/sysmon/sysmon-soc.xml) — final configuration used after telemetry analysis and detection validation.
+
+The tuned configuration was applied using:
 
     C:\Windows\Sysmon64.exe -c C:\Sysmon\sysmon-soc.xml
 
