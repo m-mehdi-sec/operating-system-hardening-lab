@@ -669,13 +669,13 @@ This project reinforced several practical security engineering principles:
     │
     ├── configs/
     │   └── sysmon/
+    │       ├── sysmon-pre-tuning.xml
     │       └── sysmon-soc.xml
     │
     ├── docs/
     │   └── lab-documentation.md
     │
     └── images/
-        ├── os-hardening-lab-architecture.png
         ├── 01-win11-policy-analyzer-before.png
         ├── 02-win11-policy-analyzer-after.png
         ├── 03-server2025-policy-analyzer-before.png
@@ -685,7 +685,8 @@ This project reinforced several practical security engineering principles:
         ├── 07-ubuntu-cis-after.png
         ├── 08-wazuh-active-agents.png
         ├── 09-wazuh-account-discovery.png
-        └── 10-wazuh-failed-logon.png
+        ├── 10-wazuh-failed-logon.png
+        └── os-hardening-lab-architecture.png
 
 ---
 
