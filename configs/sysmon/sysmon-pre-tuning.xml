@@ -1,1 +1,40 @@
+<Sysmon schemaversion="4.90">
+  <HashAlgorithms>SHA256</HashAlgorithms>
+  <CheckRevocation/>
 
+  <EventFiltering>
+
+    <!-- Event ID 1: Process Creation -->
+    <ProcessCreate onmatch="exclude">
+    </ProcessCreate>
+
+    <!-- Event ID 3: Network Connection -->
+    <NetworkConnect onmatch="exclude">
+    </NetworkConnect>
+
+    <!-- Event ID 5: Process Termination -->
+    <ProcessTerminate onmatch="exclude">
+    </ProcessTerminate>
+
+    <!-- Event ID 6: Driver Load -->
+    <DriverLoad onmatch="exclude">
+    </DriverLoad>
+
+    <!-- Event ID 7: Image Load -->
+    <ImageLoad onmatch="exclude">
+    </ImageLoad>
+
+    <!-- Event ID 11: File Creation -->
+    <FileCreate onmatch="exclude">
+    </FileCreate>
+
+    <!-- Event IDs 12, 13, 14: Registry Activity -->
+    <RegistryEvent onmatch="exclude">
+    </RegistryEvent>
+
+    <!-- Event ID 22: DNS Query -->
+    <DnsQuery onmatch="exclude">
+    </DnsQuery>
+
+  </EventFiltering>
+</Sysmon>
